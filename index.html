@@ -31,7 +31,7 @@
             font-family: 'Cairo', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            padding-bottom: 100px; /* Space for fixed cart bar */
+            padding-bottom: 20px; /* تقليل المسافة السفلية بعد إزالة الشريط */
             background-color: var(--background-color);
             background-image: url('images/background.jpg');
             background-size: cover;
@@ -304,7 +304,7 @@
         /* --- Scroll to Top Button --- */
         #scrollToTopBtn {
             position: fixed;
-            bottom: 120px; /* Position above the cart bar */
+            bottom: 20px; /* تعديل الموضع */
             left: 20px;
             z-index: 1005;
             border: none;
@@ -324,51 +324,81 @@
             transform: scale(1.1);
         }
 
-        /* Cart Bar */
-        .cart-bar {
+        /* Floating Cart Icons */
+        .floating-cart {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            padding: 15px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            bottom: 20px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
         }
 
-        .cart-section {
-            text-align: center;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 10px;
-            transition: background-color 0.3s;
-        }
-        .cart-section:hover {
-            background-color: rgba(255,255,255,0.1);
+        .floating-cart.dinein {
+            right: 20px;
         }
 
-        .cart-section i {
-            font-size: 1.5em;
-            margin-bottom: 5px;
+        .floating-cart.delivery {
+            right: 90px; /* مسافة كافية للأيقونة الثانية */
         }
-        .cart-section .cart-count {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 0.8em;
-            font-weight: bold;
+
+        .floating-cart-btn {
             position: relative;
-            top: -10px;
-            right: -5px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8em;
         }
-        .cart-section p {
-            font-size: 0.9em;
-            margin-top: 5px;
+
+        .floating-cart-btn.dinein {
+            background: linear-gradient(135deg, #28a745, #218838);
+        }
+
+        .floating-cart-btn.delivery {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+
+        .floating-cart-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .floating-cart-btn i {
+            margin-bottom: 2px;
+        }
+
+        .floating-cart-btn span {
+            font-size: 0.35em;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .floating-cart-count {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background-color: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5em;
+            font-weight: bold;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* Modal Styles */
@@ -662,12 +692,43 @@
             .map-container {
                 height: 250px;
             }
+            /* تعديلات خاصة بالأيقونات العائمة على الموبايل */
+            .floating-cart {
+                flex-direction: row; /* جعل الأيقونات أفقية على الموبايل */
+                justify-content: center;
+                bottom: 15px;
+                right: 10px;
+                left: 10px;
+                gap: 20px;
+            }
+            .floating-cart.dinein,
+            .floating-cart.delivery {
+                position: static; /* إزالة تحديد الموضع */
+            }
+            .floating-cart-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+            }
+            .floating-cart-btn span {
+                font-size: 0.3em;
+            }
+            .floating-cart-count {
+                width: 20px;
+                height: 20px;
+                font-size: 0.45em;
+            }
         }
 
         @media (max-width: 480px) {
             .size-btn {
                 font-size: 0.8em; /* تصغير حجم الخط على الشاشات الصغيرة جداً */
                 padding: 4px 8px; /* تقليل الحشو */
+            }
+            .floating-cart-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3em;
             }
         }
 
@@ -901,8 +962,8 @@
                             <div class="item-actions">
                                 <div class="price-sizes">
                                     <span>السعر:</span>
-                                    <button class="size-btn active" data-price="10">250 مل (10ج)</button>
-                                    <button class="size-btn" data-price="15">300 مل (15ج)</button>
+                                    <button class="size-btn active" data-price="10">300 مل (10ج)</button>
+                                    <button class="size-btn" data-price="15">500 مل (15ج)</button>
                                 </div>
                                 <div class="cart-buttons">
                                     <button class="add-to-cart-btn dinein" data-name="مشروبات غازية" data-category="drinks" data-cart-type="dinein">صالة</button>
@@ -970,17 +1031,21 @@
         </div>
     </main>
 
-    <!-- Cart Bar -->
-    <div class="cart-bar">
-        <div class="cart-section" onclick="openCartModal('dinein')">
-            <i class="fas fa-store"></i>
-            <p>طلبات الصالة</p>
-            <span class="cart-count" id="dinein-count">0</span>
+    <!-- Floating Cart Icons -->
+    <div class="floating-cart">
+        <div class="floating-cart dinein">
+            <div class="floating-cart-btn dinein" onclick="openCartModal('dinein')">
+                <i class="fas fa-store"></i>
+                <span>صالة</span>
+                <div class="floating-cart-count" id="dinein-count">0</div>
+            </div>
         </div>
-        <div class="cart-section" onclick="openCartModal('delivery')">
-            <i class="fas fa-motorcycle"></i>
-            <p>طلبات الدليفرى</p>
-            <span class="cart-count" id="delivery-count">0</span>
+        <div class="floating-cart delivery">
+            <div class="floating-cart-btn delivery" onclick="openCartModal('delivery')">
+                <i class="fas fa-motorcycle"></i>
+                <span>دليفرى</span>
+                <div class="floating-cart-count" id="delivery-count">0</div>
+            </div>
         </div>
     </div>
 
@@ -1451,4 +1516,3 @@
 
 </body>
 </html>
-
