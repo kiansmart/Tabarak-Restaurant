@@ -230,12 +230,14 @@
             display: flex;
             gap: 10px;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* تعديل: منع الالتفاف */
+            overflow-x: auto; /* إضافة شريط تمرير أفقي إذا لزم الأمر */
         }
         
         .price-sizes span {
             font-size: 0.9em;
             font-weight: bold;
+            white-space: nowrap; /* منع انقسام النص */
         }
 
         .size-btn {
@@ -246,6 +248,8 @@
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap; /* منع انقسام النص داخل الزر */
+            flex-shrink: 0; /* منع انكماش الزر */
         }
         .size-btn.active {
             background-color: var(--primary-color);
@@ -634,6 +638,10 @@
             }
             .menu-item {
                 flex: 1 1 100%; /* 1 column on small screens */
+            }
+            .price-sizes {
+                flex-wrap: wrap; /* السماح بالالتفاف على الشاشات الصغيرة */
+                justify-content: center; /* توسيط الأزرار */
             }
             .contact-container {
                 flex-direction: column;
