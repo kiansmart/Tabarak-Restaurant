@@ -230,14 +230,15 @@
             display: flex;
             gap: 10px;
             align-items: center;
-            flex-wrap: nowrap; /* تعديل: منع الالتفاف */
-            overflow-x: auto; /* إضافة شريط تمرير أفقي إذا لزم الأمر */
+            flex-wrap: nowrap; /* منع الالتفاف على الشاشات الكبيرة والمتوسطة */
+            overflow-x: auto; /* إضافة شريط تمرير أفقي عند الحاجة */
         }
         
         .price-sizes span {
             font-size: 0.9em;
             font-weight: bold;
             white-space: nowrap; /* منع انقسام النص */
+            flex-shrink: 0; /* منع انكماش النص */
         }
 
         .size-btn {
@@ -250,6 +251,7 @@
             transition: all 0.3s ease;
             white-space: nowrap; /* منع انقسام النص داخل الزر */
             flex-shrink: 0; /* منع انكماش الزر */
+            min-width: fit-content; /* ضمان عرض مناسب للزر */
         }
         .size-btn.active {
             background-color: var(--primary-color);
@@ -639,15 +641,33 @@
             .menu-item {
                 flex: 1 1 100%; /* 1 column on small screens */
             }
+            /* تعديل خاص بعرض الأزرار على الموبايل */
             .price-sizes {
-                flex-wrap: wrap; /* السماح بالالتفاف على الشاشات الصغيرة */
-                justify-content: center; /* توسيط الأزرار */
+                flex-wrap: wrap; /* السماح بالالتفاف على الموبايل */
+                justify-content: flex-start; /* محاذاة الأزرار لليمين */
+                gap: 8px; /* تقليل المسافة بين الأزرار */
+            }
+            .price-sizes span {
+                width: 100%; /* جعل كلمة "السعر:" تأخذ سطر كامل */
+                margin-bottom: 5px; /* إضافة مسافة تحت كلمة السعر */
+            }
+            .size-btn {
+                flex: 1; /* جعل الأزرار تأخذ مساحة متساوية */
+                min-width: 0; /* السماح للأزرار بالانكماش */
+                text-align: center; /* توسيط النص داخل الأزرار */
             }
             .contact-container {
                 flex-direction: column;
             }
             .map-container {
                 height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .size-btn {
+                font-size: 0.8em; /* تصغير حجم الخط على الشاشات الصغيرة جداً */
+                padding: 4px 8px; /* تقليل الحشو */
             }
         }
 
