@@ -31,7 +31,7 @@
             font-family: 'Cairo', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            padding-bottom: 20px; /* تقليل المسافة السفلية بعد إزالة الشريط */
+            padding-bottom: 20px;
             background-color: var(--background-color);
             background-image: url('images/background.jpg');
             background-size: cover;
@@ -77,15 +77,16 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--secondary-color);
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1em;
             transition: color 0.3s ease;
             padding-bottom: 5px;
             border-bottom: 2px solid transparent;
@@ -134,7 +135,7 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s ease;
-            display: none; /* Hidden by default */
+            display: none;
         }
         .clear-filter-btn:hover {
             background-color: #c82333;
@@ -150,37 +151,62 @@
             padding: 0 20px 20px;
         }
 
-        .category {
+        /* NEW: Main Category Styles */
+        .main-category {
             margin-bottom: 40px;
-            padding: 20px;
             background-color: var(--white-color);
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
 
-        .category h2 {
+        .main-category-header {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 15px 20px;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .sub-categories-container {
+            padding: 20px;
+        }
+
+        .sub-category {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .sub-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .sub-category h2 {
             color: var(--secondary-color);
-            border-bottom: 3px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
             margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 1.5em;
         }
-        
+
         .menu-items-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
 
         .menu-item {
-            /* MODIFICATION: Changed to 3 columns */
-            flex: 1 1 calc(33.333% - 20px);
-            min-width: 280px;
+            /* MODIFIED: Changed to 4 columns */
+            flex: 1 1 calc(25% - 15px);
+            min-width: 240px;
             display: flex;
             flex-direction: column;
             background-color: #fff;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -193,12 +219,13 @@
 
         .item-image {
             width: 100%;
-            height: 200px;
+            /* MODIFIED: Reduced height */
+            height: 160px;
             object-fit: cover;
         }
 
         .item-content {
-            padding: 15px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -209,49 +236,55 @@
         }
 
         .item-details h3 {
-            font-size: 1.3em;
+            /* MODIFIED: Reduced font size */
+            font-size: 1.1em;
             color: var(--secondary-color);
             margin-bottom: 5px;
         }
 
         .item-details p {
-            font-size: 0.9em;
+            /* MODIFIED: Reduced font size and margin */
+            font-size: 0.8em;
             color: #666;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            /* MODIFIED: Reduced line height */
+            line-height: 1.4;
         }
 
         .item-actions {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .price-sizes {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
-            flex-wrap: nowrap; /* منع الالتفاف على الشاشات الكبيرة والمتوسطة */
-            overflow-x: auto; /* إضافة شريط تمرير أفقي عند الحاجة */
+            flex-wrap: nowrap;
+            overflow-x: auto;
         }
         
         .price-sizes span {
-            font-size: 0.9em;
+            font-size: 0.8em;
             font-weight: bold;
-            white-space: nowrap; /* منع انقسام النص */
-            flex-shrink: 0; /* منع انكماش النص */
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .size-btn {
-            padding: 5px 10px;
+            /* MODIFIED: Reduced padding and font size */
+            padding: 4px 8px;
             border: 1px solid var(--primary-color);
             background-color: var(--white-color);
             color: var(--primary-color);
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
-            white-space: nowrap; /* منع انقسام النص داخل الزر */
-            flex-shrink: 0; /* منع انكماش الزر */
-            min-width: fit-content; /* ضمان عرض مناسب للزر */
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: fit-content;
+            font-size: 0.8em;
         }
         .size-btn.active {
             background-color: var(--primary-color);
@@ -260,19 +293,20 @@
 
         .cart-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             justify-content: space-between;
         }
 
         .add-to-cart-btn {
             flex: 1;
-            padding: 10px;
+            /* MODIFIED: Reduced padding and font size */
+            padding: 8px;
             background-color: var(--primary-color);
             color: var(--white-color);
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 0.8em;
             font-weight: bold;
             transition: background-color 0.3s ease;
             text-align: center;
@@ -304,7 +338,7 @@
         /* --- Scroll to Top Button --- */
         #scrollToTopBtn {
             position: fixed;
-            bottom: 20px; /* تعديل الموضع */
+            bottom: 20px;
             left: 20px;
             z-index: 1005;
             border: none;
@@ -316,7 +350,7 @@
             border-radius: 50%;
             font-size: 18px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            display: none; /* Hidden by default */
+            display: none;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
         #scrollToTopBtn:hover {
@@ -340,7 +374,7 @@
         }
 
         .floating-cart.delivery {
-            right: 90px; /* مسافة كافية للأيقونة الثانية */
+            right: 90px;
         }
 
         .floating-cart-btn {
@@ -642,9 +676,15 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .menu-item {
+                flex: 1 1 calc(33.333% - 15px);
+            }
+        }
+
         @media (max-width: 992px) {
             .menu-item {
-                flex: 1 1 calc(50% - 20px); /* 2 columns on medium screens */
+                flex: 1 1 calc(50% - 15px);
             }
         }
 
@@ -669,22 +709,21 @@
                 max-width: 400px;
             }
             .menu-item {
-                flex: 1 1 100%; /* 1 column on small screens */
+                flex: 1 1 100%;
             }
-            /* تعديل خاص بعرض الأزرار على الموبايل */
             .price-sizes {
-                flex-wrap: wrap; /* السماح بالالتفاف على الموبايل */
-                justify-content: flex-start; /* محاذاة الأزرار لليمين */
-                gap: 8px; /* تقليل المسافة بين الأزرار */
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 8px;
             }
             .price-sizes span {
-                width: 100%; /* جعل كلمة "السعر:" تأخذ سطر كامل */
-                margin-bottom: 5px; /* إضافة مسافة تحت كلمة السعر */
+                width: 100%;
+                margin-bottom: 5px;
             }
             .size-btn {
-                flex: 1; /* جعل الأزرار تأخذ مساحة متساوية */
-                min-width: 0; /* السماح للأزرار بالانكماش */
-                text-align: center; /* توسيط النص داخل الأزرار */
+                flex: 1;
+                min-width: 0;
+                text-align: center;
             }
             .contact-container {
                 flex-direction: column;
@@ -692,9 +731,8 @@
             .map-container {
                 height: 250px;
             }
-            /* تعديلات خاصة بالأيقونات العائمة على الموبايل */
             .floating-cart {
-                flex-direction: row; /* جعل الأيقونات أفقية على الموبايل */
+                flex-direction: row;
                 justify-content: center;
                 bottom: 15px;
                 right: 10px;
@@ -703,7 +741,7 @@
             }
             .floating-cart.dinein,
             .floating-cart.delivery {
-                position: static; /* إزالة تحديد الموضع */
+                position: static;
             }
             .floating-cart-btn {
                 width: 50px;
@@ -722,8 +760,8 @@
 
         @media (max-width: 480px) {
             .size-btn {
-                font-size: 0.8em; /* تصغير حجم الخط على الشاشات الصغيرة جداً */
-                padding: 4px 8px; /* تقليل الحشو */
+                font-size: 0.7em;
+                padding: 3px 6px;
             }
             .floating-cart-btn {
                 width: 45px;
@@ -745,10 +783,9 @@
     <nav class="nav-search-container">
         <div class="container">
             <ul class="nav-links">
-                <li><a href="#sandwiches" class="nav-link active" data-target="sandwiches">ساندوتشات</a></li>
-                <li><a href="#platters" class="nav-link" data-target="platters">مشويات</a></li>
-                <li><a href="#sides" class="nav-link" data-target="sides">وجبات جانبية</a></li>
-                <li><a href="#drinks" class="nav-link" data-target="drinks">مشروبات</a></li>
+                <li><a href="#sandwiches" class="nav-link active" data-target="sandwiches">السندوتشات</a></li>
+                <li><a href="#platters" class="nav-link" data-target="platters">الأطباق</a></li>
+                <li><a href="#boxes" class="nav-link" data-target="boxes">العلب</a></li>
                 <li><a href="#contact" class="nav-link" data-target="contact">تواصل معنا</a></li>
             </ul>
             <div class="search-and-filter">
@@ -763,90 +800,989 @@
 
     <main>
         <div class="main-container">
-            <!-- Sandwiches Section -->
-            <section class="category" id="sandwiches" data-category="sandwiches">
-                <h2><i class="fas fa-burger"></i> ساندوتشات</h2>
-                <div class="menu-items-grid">
-                    <div class="menu-item" data-name="فول بالشطة" data-category="sandwiches">
-                        <img src="images/foul.jpg" alt="فول بالشطة" class="item-image">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <h3>فول بالشطة</h3>
-                                <p>فول مدمس بالطحينة والشطة والليمون</p>
-                            </div>
-                            <div class="item-actions">
-                                <div class="price-sizes">
-                                    <span>السعر:</span>
-                                    <button class="size-btn active" data-price="15">صغير (15ج)</button>
-                                    <button class="size-btn" data-price="25">وسط (25ج)</button>
-                                    <button class="size-btn" data-price="35">كبير (35ج)</button>
+            <!-- Sandwiches Main Category with Sub-categories -->
+            <section class="main-category" id="sandwiches" data-category="sandwiches">
+                <div class="main-category-header">
+                    <i class="fas fa-burger"></i> السندوتشات
+                </div>
+                <div class="sub-categories-container">
+                    <!-- Omelette Sub-category -->
+                    <div class="sub-category" id="omelette" data-category="omelette">
+                        <h2><i class="fas fa-egg"></i> سندوتشات الأومليت</h2>
+                        <div class="menu-items-grid">
+                            <div class="menu-item" data-name="اومليت سادة" data-category="omelette">
+                                <img src="images/omelette-plain.jpg" alt="اومليت سادة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت سادة</h3>
+                                        <p>بيض مخفوق بالطريقة التقليدية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت سادة" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت سادة" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="فول بالشطة" data-category="sandwiches" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="فول بالشطة" data-category="sandwiches" data-cart-type="delivery">دليفرى</button>
+                            </div>
+                            <div class="menu-item" data-name="اومليت زبدة" data-category="omelette">
+                                <img src="images/omelette-butter.jpg" alt="اومليت زبدة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت زبدة</h3>
+                                        <p>بيض مخفوق مع زبدة طبيعية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="17">واحد (17ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت زبدة" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت زبدة" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت بسطرمة" data-category="omelette">
+                                <img src="images/omelette-pickled.jpg" alt="اومليت بسطرمة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت بسطرمة</h3>
+                                        <p>بيض مخفوق مع بسطرمة حارة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">واحد (25ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت بسطرمة" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت بسطرمة" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت سجق" data-category="omelette">
+                                <img src="images/omelette-sausage.jpg" alt="اومليت سجق" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت سجق</h3>
+                                        <p>بيض مخفوق مع سجق مقطع</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">واحد (25ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت سجق" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت سجق" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت بيتزا" data-category="omelette">
+                                <img src="images/omelette-pizza.jpg" alt="اومليت بيتزا" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت بيتزا</h3>
+                                        <p>بيض مخفوق مع صلصة بيتزا وجبن</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت بيتزا" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت بيتزا" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت جبنة رومى" data-category="omelette">
+                                <img src="images/omelette-romy.jpg" alt="اومليت جبنة رومى" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت جبنة رومى</h3>
+                                        <p>بيض مخفوق مع جبنة رومي كريمية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت جبنة رومى" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت جبنة رومى" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت جبنة شيدر" data-category="omelette">
+                                <img src="images/omelette-cheddar.jpg" alt="اومليت جبنة شيدر" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت جبنة شيدر</h3>
+                                        <p>بيض مخفوق مع جبنة شيدر ذائبة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت جبنة شيدر" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت جبنة شيدر" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت جبنة موتزريلا" data-category="omelette">
+                                <img src="images/omelette-mozzarella.jpg" alt="اومليت جبنة موتزريلا" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت جبنة موتزريلا</h3>
+                                        <p>بيض مخفوق مع جبنة موتزريلا طازجة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت جبنة موتزريلا" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت جبنة موتزريلا" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="اومليت ميكس جبن" data-category="omelette">
+                                <img src="images/omelette-mixed-cheese.jpg" alt="اومليت ميكس جبن" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>اومليت ميكس جبن</h3>
+                                        <p>بيض مخفوق مع تشكيلة جبن متنوعة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">واحد (25ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="اومليت ميكس جبن" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="اومليت ميكس جبن" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="بيض مسلوق" data-category="omelette">
+                                <img src="images/boiled-eggs.jpg" alt="بيض مسلوق" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>بيض مسلوق</h3>
+                                        <p>بيض مسلوق بالطريقة المثالية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="بيض مسلوق" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="بيض مسلوق" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="بيض مدحرج فى الزبدة" data-category="omelette">
+                                <img src="images/scrambled-eggs-butter.jpg" alt="بيض مدحرج فى الزبدة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>بيض مدحرج فى الزبدة</h3>
+                                        <p>بيض مخفوق مع زبدة طبيعية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="بيض مدحرج فى الزبدة" data-category="omelette" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="بيض مدحرج فى الزبدة" data-category="omelette" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="menu-item" data-name="فلافل" data-category="sandwiches">
-                        <img src="images/falafel.jpg" alt="فلافل" class="item-image">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <h3>فلافل</h3>
-                                <p>طازة ومقرمشة مع السلطة والطحينة</p>
-                            </div>
-                            <div class="item-actions">
-                                <div class="price-sizes">
-                                    <span>السعر:</span>
-                                    <button class="size-btn active" data-price="15">صغير (15ج)</button>
-                                    <button class="size-btn" data-price="25">وسط (25ج)</button>
-                                    <button class="size-btn" data-price="35">كبير (35ج)</button>
+
+                    <!-- Falafel Sub-category -->
+                    <div class="sub-category" id="falafel" data-category="falafel">
+                        <h2><i class="fas fa-seedling"></i> سندوتشات الطعمية</h2>
+                        <div class="menu-items-grid">
+                            <div class="menu-item" data-name="طعمية" data-category="falafel">
+                                <img src="images/falafel.jpg" alt="طعمية" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية</h3>
+                                        <p>طازة ومقرمشة مع السلطة والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="10">واحد (10ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="فلافل" data-category="sandwiches" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="فلافل" data-category="sandwiches" data-cart-type="delivery">دليفرى</button>
+                            </div>
+                            <div class="menu-item" data-name="طعمية مخصوص" data-category="falafel">
+                                <img src="images/falafel-special.jpg" alt="طعمية مخصوص" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية مخصوص</h3>
+                                        <p>طعمية مع إضافات خاصة وصلصة سرية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="12">واحد (12ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية مخصوص" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية مخصوص" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية محشية" data-category="falafel">
+                                <img src="images/falafel-stuffed.jpg" alt="طعمية محشية" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية محشية</h3>
+                                        <p>طعمية محشية باللحم المفروم والمكسرات</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية محشية" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية محشية" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية عين الكتكوت" data-category="falafel">
+                                <img src="images/falafel-chicken-eye.jpg" alt="طعمية عين الكتكوت" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية عين الكتكوت</h3>
+                                        <p>طعمية مع عين الكتكوت والخضروات المشكلة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية عين الكتكوت" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية عين الكتكوت" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على أومليت" data-category="falafel">
+                                <img src="images/falafel-omelette.jpg" alt="طعمية على أومليت" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على أومليت</h3>
+                                        <p>طعمية مع أومليت بالجبن والخضروات</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على أومليت" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على أومليت" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على بيض مسلوق" data-category="falafel">
+                                <img src="images/falafel-boiled-egg.jpg" alt="طعمية على بيض مسلوق" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على بيض مسلوق</h3>
+                                        <p>طعمية مع بيض مسلوق والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على بيض مسلوق" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على بيض مسلوق" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على صوابع" data-category="falafel">
+                                <img src="images/falafel-fingers.jpg" alt="طعمية على صوابع" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على صوابع</h3>
+                                        <p>طعمية مع صوابع الدجاج المقرمشة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على صوابع" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على صوابع" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على باذنجان" data-category="falafel">
+                                <img src="images/falafel-eggplant.jpg" alt="طعمية على باذنجان" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على باذنجان</h3>
+                                        <p>طعمية مع باذنجان مشوي والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على باذنجان" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على باذنجان" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على بابا غنوج" data-category="falafel">
+                                <img src="images/falafel-baba-ghanouj.jpg" alt="طعمية على بابا غنوج" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على بابا غنوج</h3>
+                                        <p>طعمية مع بابا غنوج والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على بابا غنوج" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على بابا غنوج" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على جبنة قريش" data-category="falafel">
+                                <img src="images/falafel-kareish.jpg" alt="طعمية على جبنة قريش" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على جبنة قريش</h3>
+                                        <p>طعمية مع جبنة قريش والخضروات</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على جبنة قريش" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على جبنة قريش" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على جبنة قديمة" data-category="falafel">
+                                <img src="images/falafel-aged-cheese.jpg" alt="طعمية على جبنة قديمة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على جبنة قديمة</h3>
+                                        <p>طعمية مع جبنة قديمة مالحة والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على جبنة قديمة" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على جبنة قديمة" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على جبنة رومى" data-category="falafel">
+                                <img src="images/falafel-romy.jpg" alt="طعمية على جبنة رومى" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على جبنة رومى</h3>
+                                        <p>طعمية مع جبنة رومي كريمية والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على جبنة رومى" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على جبنة رومى" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على جبنة شيدر" data-category="falafel">
+                                <img src="images/falafel-cheddar.jpg" alt="طعمية على جبنة شيدر" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على جبنة شيدر</h3>
+                                        <p>طعمية مع جبنة شيدر ذائبة والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على جبنة شيدر" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على جبنة شيدر" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية على جبنة موتزريلا" data-category="falafel">
+                                <img src="images/falafel-mozzarella.jpg" alt="طعمية على جبنة موتزريلا" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية على جبنة موتزريلا</h3>
+                                        <p>طعمية مع جبنة موتزريلا طازجة والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">واحد (15ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية على جبنة موتزريلا" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية على جبنة موتزريلا" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية ميكس جبن" data-category="falafel">
+                                <img src="images/falafel-mixed-cheese.jpg" alt="طعمية ميكس جبن" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية ميكس جبن</h3>
+                                        <p>طعمية مع تشكيلة جبن متنوعة والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">واحد (25ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية ميكس جبن" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية ميكس جبن" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية جبنة كيرى" data-category="falafel">
+                                <img src="images/falafel-kiri.jpg" alt="طعمية جبنة كيرى" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية جبنة كيرى</h3>
+                                        <p>طعمية مع جبنة كيري والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية جبنة كيرى" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية جبنة كيرى" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية بسطرمة" data-category="falafel">
+                                <img src="images/falafel-pickled.jpg" alt="طعمية بسطرمة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية بسطرمة</h3>
+                                        <p>طعمية مع بسطرمة حارة والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية بسطرمة" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية بسطرمة" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="طعمية سجق" data-category="falafel">
+                                <img src="images/falafel-sausage.jpg" alt="طعمية سجق" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>طعمية سجق</h3>
+                                        <p>طعمية مع سجق مقطع والطحينة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">واحد (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="طعمية سجق" data-category="falafel" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="طعمية سجق" data-category="falafel" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="menu-item" data-name="شاورما فراخ" data-category="sandwiches">
-                        <img src="images/shawarma-chicken.jpg" alt="شاورما فراخ" class="item-image">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <h3>شاورما فراخ</h3>
-                                <p>ألذ شاورما فراخ مع الخضروات والصلصات السرية</p>
-                            </div>
-                            <div class="item-actions">
-                                <div class="price-sizes">
-                                    <span>السعر:</span>
-                                    <button class="size-btn active" data-price="45">صغير (45ج)</button>
-                                    <button class="size-btn" data-price="65">وسط (65ج)</button>
-                                    <button class="size-btn" data-price="85">كبير (85ج)</button>
+
+                    <!-- Potato Sub-category -->
+                    <div class="sub-category" id="potato" data-category="potato">
+                        <h2><i class="fas fa-potato"></i> سندوتشات البطاطس</h2>
+                        <div class="menu-items-grid">
+                            <div class="menu-item" data-name="بطاطس مقلية" data-category="potato">
+                                <img src="images/fries.jpg" alt="بطاطس مقلية" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>بطاطس مقلية</h3>
+                                        <p>مقرمشة وذهبية مع الكاتشب</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">صغير (15ج)</button>
+                                            <button class="size-btn" data-price="25">كبير (25ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="بطاطس مقلية" data-category="potato" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="بطاطس مقلية" data-category="potato" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="شاورما فراخ" data-category="sandwiches" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="شاورما فراخ" data-category="sandwiches" data-cart-type="delivery">دليفرى</button>
+                            </div>
+                            <div class="menu-item" data-name="بطاطس بالجبن" data-category="potato">
+                                <img src="images/potato-cheese.jpg" alt="بطاطس بالجبن" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>بطاطس بالجبن</h3>
+                                        <p>بطاطس مقلية مع جبن شيدر وموزاريلا</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">صغير (25ج)</button>
+                                            <button class="size-btn" data-price="35">كبير (35ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="بطاطس بالجبن" data-category="potato" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="بطاطس بالجبن" data-category="potato" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="بطاطس باللحم" data-category="potato">
+                                <img src="images/potato-meat.jpg" alt="بطاطس باللحم" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>بطاطس باللحم</h3>
+                                        <p>بطاطس مقلية مع لحم مفروم وجبن</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="30">صغير (30ج)</button>
+                                            <button class="size-btn" data-price="40">كبير (40ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="بطاطس باللحم" data-category="potato" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="بطاطس باللحم" data-category="potato" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                     <div class="menu-item" data-name="كفتة" data-category="sandwiches">
-                        <img src="images/kofta.jpg" alt="كفتة" class="item-image">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <h3>كفتة</h3>
-                                <p>مشوية على الفحم مع الطماطم والبصل</p>
-                            </div>
-                            <div class="item-actions">
-                                <div class="price-sizes">
-                                    <span>السعر:</span>
-                                    <button class="size-btn active" data-price="50">صغير (50ج)</button>
-                                    <button class="size-btn" data-price="70">وسط (70ج)</button>
-                                    <button class="size-btn" data-price="90">كبير (90ج)</button>
+
+                    <!-- Foul Sub-category -->
+                    <div class="sub-category" id="foul" data-category="foul">
+                        <h2><i class="fas fa-bowl-food"></i> سندوتشات الفول</h2>
+                        <div class="menu-items-grid">
+                            <div class="menu-item" data-name="فول ساده" data-category="foul">
+                                <img src="images/foul-plain.jpg" alt="فول ساده" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول ساده</h3>
+                                        <p>فول مدمس بالطريقة التقليدية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="10">صغير (10ج)</button>
+                                            <button class="size-btn" data-price="15">وسط (15ج)</button>
+                                            <button class="size-btn" data-price="20">كبير (20ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول ساده" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول ساده" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="كفتة" data-category="sandwiches" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="كفتة" data-category="sandwiches" data-cart-type="delivery">دليفرى</button>
+                            </div>
+                            <div class="menu-item" data-name="فول بالشطة" data-category="foul">
+                                <img src="images/foul-spicy.jpg" alt="فول بالشطة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالشطة</h3>
+                                        <p>فول مدمس بالطحينة والشطة الحارة والليمون</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">صغير (15ج)</button>
+                                            <button class="size-btn" data-price="25">وسط (25ج)</button>
+                                            <button class="size-btn" data-price="35">كبير (35ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالشطة" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالشطة" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالطحينة" data-category="foul">
+                                <img src="images/foul-tahini.jpg" alt="فول بالطحينة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالطحينة</h3>
+                                        <p>فول مدمس مع الطحينة وعصير الليمون</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">صغير (15ج)</button>
+                                            <button class="size-btn" data-price="25">وسط (25ج)</button>
+                                            <button class="size-btn" data-price="35">كبير (35ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالطحينة" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالطحينة" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالزيت الحار" data-category="foul">
+                                <img src="images/foul-hot-oil.jpg" alt="فول بالزيت الحار" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالزيت الحار</h3>
+                                        <p>فول مدمس مع زيت زيتون حار وشطة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">صغير (15ج)</button>
+                                            <button class="size-btn" data-price="25">وسط (25ج)</button>
+                                            <button class="size-btn" data-price="35">كبير (35ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالزيت الحار" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالزيت الحار" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالطماطم" data-category="foul">
+                                <img src="images/foul-tomato.jpg" alt="فول بالطماطم" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالطماطم</h3>
+                                        <p>فول مدمس مع طماطم مقطعة وبصل</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">صغير (15ج)</button>
+                                            <button class="size-btn" data-price="25">وسط (25ج)</button>
+                                            <button class="size-btn" data-price="35">كبير (35ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالطماطم" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالطماطم" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالبيض" data-category="foul">
+                                <img src="images/foul-egg.jpg" alt="فول بالبيض" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالبيض</h3>
+                                        <p>فول مدمس مع بيض مقلي وزيت زيتون</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">صغير (20ج)</button>
+                                            <button class="size-btn" data-price="30">وسط (30ج)</button>
+                                            <button class="size-btn" data-price="40">كبير (40ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالبيض" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالبيض" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالبسطرمة" data-category="foul">
+                                <img src="images/foul-pickled.jpg" alt="فول بالبسطرمة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالبسطرمة</h3>
+                                        <p>فول مدمس مع بسطرمة وبصل</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">صغير (20ج)</button>
+                                            <button class="size-btn" data-price="30">وسط (30ج)</button>
+                                            <button class="size-btn" data-price="40">كبير (40ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالبسطرمة" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالبسطرمة" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالسجق" data-category="foul">
+                                <img src="images/foul-sausage.jpg" alt="فول بالسجق" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالسجق</h3>
+                                        <p>فول مدمس مع سجق مقطع وصوص خاص</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">صغير (25ج)</button>
+                                            <button class="size-btn" data-price="35">وسط (35ج)</button>
+                                            <button class="size-btn" data-price="45">كبير (45ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالسجق" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالسجق" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول باللحمة" data-category="foul">
+                                <img src="images/foul-meat.jpg" alt="فول باللحمة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول باللحمة</h3>
+                                        <p>فول مدمس مع لحم مفروم وبصل مقلي</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="25">صغير (25ج)</button>
+                                            <button class="size-btn" data-price="35">وسط (35ج)</button>
+                                            <button class="size-btn" data-price="45">كبير (45ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول باللحمة" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول باللحمة" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول بالزيت والليمون" data-category="foul">
+                                <img src="images/foul-oil-lemon.jpg" alt="فول بالزيت والليمون" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول بالزيت والليمون</h3>
+                                        <p>فول مدمس مع زيت زيتون وعصير ليمون طازج</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="15">صغير (15ج)</button>
+                                            <button class="size-btn" data-price="25">وسط (25ج)</button>
+                                            <button class="size-btn" data-price="35">كبير (35ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول بالزيت والليمون" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول بالزيت والليمون" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول إسماعلاوي" data-category="foul">
+                                <img src="images/foul-ismaili.jpg" alt="فول إسماعلاوي" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول إسماعلاوي</h3>
+                                        <p>فول مدمس بالطريقة الإسماعيلية الشهيرة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">صغير (20ج)</button>
+                                            <button class="size-btn" data-price="30">وسط (30ج)</button>
+                                            <button class="size-btn" data-price="40">كبير (40ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول إسماعلاوي" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول إسماعلاوي" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول اسكندراني" data-category="foul">
+                                <img src="images/foul-alexandrian.jpg" alt="فول اسكندراني" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول اسكندراني</h3>
+                                        <p>فول مدمس بالطريقة الإسكندرانية المميزة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="20">صغير (20ج)</button>
+                                            <button class="size-btn" data-price="30">وسط (30ج)</button>
+                                            <button class="size-btn" data-price="40">كبير (40ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول اسكندراني" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول اسكندراني" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="فول مخصوص" data-category="foul">
+                                <img src="images/foul-special.jpg" alt="فول مخصوص" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>فول مخصوص</h3>
+                                        <p>فول مدمس مع جميع الإضافات المميزة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="30">صغير (30ج)</button>
+                                            <button class="size-btn" data-price="40">وسط (40ج)</button>
+                                            <button class="size-btn" data-price="50">كبير (50ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="فول مخصوص" data-category="foul" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="فول مخصوص" data-category="foul" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sharq Sub-category -->
+                    <div class="sub-category" id="sharq" data-category="sharq">
+                        <h2><i class="fas fa-burger"></i> سندوتشات الشرق</h2>
+                        <div class="menu-items-grid">
+                            <div class="menu-item" data-name="شاورما فراخ" data-category="sharq">
+                                <img src="images/shawarma-chicken.jpg" alt="شاورما فراخ" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>شاورما فراخ</h3>
+                                        <p>ألذ شاورما فراخ مع الخضروات والصلصات السرية</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="45">صغير (45ج)</button>
+                                            <button class="size-btn" data-price="65">وسط (65ج)</button>
+                                            <button class="size-btn" data-price="85">كبير (85ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="شاورما فراخ" data-category="sharq" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="شاورما فراخ" data-category="sharq" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="كفتة" data-category="sharq">
+                                <img src="images/kofta.jpg" alt="كفتة" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>كفتة</h3>
+                                        <p>مشوية على الفحم مع الطماطم والبصل</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="50">صغير (50ج)</button>
+                                            <button class="size-btn" data-price="70">وسط (70ج)</button>
+                                            <button class="size-btn" data-price="90">كبير (90ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="كفتة" data-category="sharq" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="كفتة" data-category="sharq" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-name="كباب" data-category="sharq">
+                                <img src="images/kebab.jpg" alt="كباب" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-details">
+                                        <h3>كباب</h3>
+                                        <p>مشوي على الفحم مع الخضروات والصلصة</p>
+                                    </div>
+                                    <div class="item-actions">
+                                        <div class="price-sizes">
+                                            <span>السعر:</span>
+                                            <button class="size-btn active" data-price="55">صغير (55ج)</button>
+                                            <button class="size-btn" data-price="75">وسط (75ج)</button>
+                                            <button class="size-btn" data-price="95">كبير (95ج)</button>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <button class="add-to-cart-btn dinein" data-name="كباب" data-category="sharq" data-cart-type="dinein">صالة</button>
+                                            <button class="add-to-cart-btn delivery" data-name="كباب" data-category="sharq" data-cart-type="delivery">دليفرى</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -856,7 +1792,7 @@
 
             <!-- Platters Section -->
             <section class="category" id="platters" data-category="platters">
-                <h2><i class="fas fa-drumstick-bite"></i> أطباق مشويات</h2>
+                <h2><i class="fas fa-drumstick-bite"></i> الأطباق</h2>
                 <div class="menu-items-grid">
                     <div class="menu-item" data-name="طبق فراخ مشوية" data-category="platters">
                         <img src="images/grilled-chicken.jpg" alt="طبق فراخ مشوية" class="item-image">
@@ -898,49 +1834,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            
-            <!-- Sides Section -->
-            <section class="category" id="sides" data-category="sides">
-                <h2><i class="fas fa-pepper-hot"></i> مقبلات ووجبات جانبية</h2>
-                <div class="menu-items-grid">
-                    <div class="menu-item" data-name="بطاطس مقلية" data-category="sides">
-                        <img src="images/fries.jpg" alt="بطاطس مقلية" class="item-image">
+                    <div class="menu-item" data-name="طبق مشويات متنوعة" data-category="platters">
+                        <img src="images/mixed-grill.jpg" alt="طبق مشويات متنوعة" class="item-image">
                         <div class="item-content">
                             <div class="item-details">
-                                <h3>بطاطس مقلية</h3>
-                                <p>مقرمشة وذهبية</p>
+                                <h3>طبق مشويات متنوعة</h3>
+                                <p>مزيج من الكفتة والكباب وفراخ مشوية</p>
                             </div>
                             <div class="item-actions">
                                 <div class="price-sizes">
                                     <span>السعر:</span>
-                                    <button class="size-btn active" data-price="20">صغير (20ج)</button>
-                                    <button class="size-btn" data-price="30">كبير (30ج)</button>
+                                    <button class="size-btn active" data-price="180">فرد (180ج)</button>
+                                    <button class="size-btn" data-price="320">عائلي (320ج)</button>
                                 </div>
                                 <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="بطاطس مقلية" data-category="sides" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="بطاطس مقلية" data-category="sides" data-cart-type="delivery">دليفرى</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item" data-name="سلطة طحينة" data-category="sides">
-                        <img src="images/tahini-salad.jpg" alt="سلطة طحينة" class="item-image">
-                        <div class="item-content">
-                            <div class="item-details">
-                                <h3>سلطة طحينة</h3>
-                                <p>طحينة كريمية بالشطة والخل</p>
-                            </div>
-                            <div class="item-actions">
-                                <div class="price-sizes">
-                                    <span>السعر:</span>
-                                    <button class="size-btn active" data-price="15">صغير (15ج)</button>
-                                    <button class="size-btn" data-price="25">كبير (25ج)</button>
-                                </div>
-                                <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="سلطة طحينة" data-category="sides" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="سلطة طحينة" data-category="sides" data-cart-type="delivery">دليفرى</button>
+                                    <button class="add-to-cart-btn dinein" data-name="طبق مشويات متنوعة" data-category="platters" data-cart-type="dinein">صالة</button>
+                                    <button class="add-to-cart-btn delivery" data-name="طبق مشويات متنوعة" data-category="platters" data-cart-type="delivery">دليفرى</button>
                                 </div>
                             </div>
                         </div>
@@ -948,45 +1857,65 @@
                 </div>
             </section>
 
-            <!-- Drinks Section -->
-            <section class="category" id="drinks" data-category="drinks">
-                <h2><i class="fas fa-glass-water"></i> مشروبات</h2>
+            <!-- Boxes Section -->
+            <section class="category" id="boxes" data-category="boxes">
+                <h2><i class="fas fa-box"></i> العلب</h2>
                 <div class="menu-items-grid">
-                    <div class="menu-item" data-name="مشروبات غازية" data-category="drinks">
-                        <img src="images/soft-drinks.jpg" alt="مشروبات غازية" class="item-image">
+                    <div class="menu-item" data-name="علبة فول وفلافل" data-category="boxes">
+                        <img src="images/foul-falafel-box.jpg" alt="علبة فول وفلافل" class="item-image">
                         <div class="item-content">
                             <div class="item-details">
-                                <h3>مشروبات غازية</h3>
-                                <p>بيبسي، كوكاكولا، سيفن أب</p>
+                                <h3>علبة فول وفلافل</h3>
+                                <p>علبة تحتوي على فول وفلاffel مع خبز وسلطات</p>
                             </div>
                             <div class="item-actions">
                                 <div class="price-sizes">
                                     <span>السعر:</span>
-                                    <button class="size-btn active" data-price="10">300 مل (10ج)</button>
-                                    <button class="size-btn" data-price="15">500 مل (15ج)</button>
+                                    <button class="size-btn active" data-price="60">صغير (60ج)</button>
+                                    <button class="size-btn" data-price="90">كبير (90ج)</button>
                                 </div>
                                 <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="مشروبات غازية" data-category="drinks" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="مشروبات غازية" data-category="drinks" data-cart-type="delivery">دليفرى</button>
+                                    <button class="add-to-cart-btn dinein" data-name="علبة فول وفلافل" data-category="boxes" data-cart-type="dinein">صالة</button>
+                                    <button class="add-to-cart-btn delivery" data-name="علبة فول وفلافل" data-category="boxes" data-cart-type="delivery">دليفرى</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="menu-item" data-name="عصائر طبيعية" data-category="drinks">
-                        <img src="images/juice.jpg" alt="عصائر طبيعية" class="item-image">
+                    <div class="menu-item" data-name="علبة مشويات" data-category="boxes">
+                        <img src="images/grill-box.jpg" alt="علبة مشويات" class="item-image">
                         <div class="item-content">
                             <div class="item-details">
-                                <h3>عصائر طبيعية</h3>
-                                <p>مانجو، فراولة، قصب</p>
+                                <h3>علبة مشويات</h3>
+                                <p>علبة تحتوي على مشويات متنوعة مع أرز وسلطات</p>
                             </div>
                             <div class="item-actions">
                                 <div class="price-sizes">
                                     <span>السعر:</span>
-                                    <button class="size-btn active" data-price="20">كوب (20ج)</button>
+                                    <button class="size-btn active" data-price="150">صغير (150ج)</button>
+                                    <button class="size-btn" data-price="250">كبير (250ج)</button>
                                 </div>
                                 <div class="cart-buttons">
-                                    <button class="add-to-cart-btn dinein" data-name="عصائر طبيعية" data-category="drinks" data-cart-type="dinein">صالة</button>
-                                    <button class="add-to-cart-btn delivery" data-name="عصائر طبيعية" data-category="drinks" data-cart-type="delivery">دليفرى</button>
+                                    <button class="add-to-cart-btn dinein" data-name="علبة مشويات" data-category="boxes" data-cart-type="dinein">صالة</button>
+                                    <button class="add-to-cart-btn delivery" data-name="علبة مشويات" data-category="boxes" data-cart-type="delivery">دليفرى</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-name="علبة عائلية" data-category="boxes">
+                        <img src="images/family-box.jpg" alt="علبة عائلية" class="item-image">
+                        <div class="item-content">
+                            <div class="item-details">
+                                <h3>علبة عائلية</h3>
+                                <p>علبة تحتوي على فول وفلافل ومشويات متنوعة</p>
+                            </div>
+                            <div class="item-actions">
+                                <div class="price-sizes">
+                                    <span>السعر:</span>
+                                    <button class="size-btn active" data-price="300">عائلية (300ج)</button>
+                                </div>
+                                <div class="cart-buttons">
+                                    <button class="add-to-cart-btn dinein" data-name="علبة عائلية" data-category="boxes" data-cart-type="dinein">صالة</button>
+                                    <button class="add-to-cart-btn delivery" data-name="علبة عائلية" data-category="boxes" data-cart-type="delivery">دليفرى</button>
                                 </div>
                             </div>
                         </div>
@@ -1021,7 +1950,7 @@
                     
                     <div class="map-container">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3457.226836360078!2d31.002149684887176!3d29.94415328191885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU2JzM5LjAiTiAzMMKwNTknNTkuOSJF!5e0!3m2!1sar!2seg!4v1763242419468!5m2!1sar!2seg" 
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3457.226836360078!2d31.002149684887176!3d29.94415328191885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU2JzM5LjAiAzMMKwNTknNTkuOSJF!5e0!3m2!1sar!2seg!4v1763242419468!5m2!1sar!2seg" 
                             allowfullscreen="" 
                             loading="lazy">
                         </iframe>
@@ -1066,7 +1995,7 @@
 <script>
     let dineInCart = [];
     let deliveryCart = [];
-    let currentCartType = ''; // 'dinein' or 'delivery'
+    let currentCartType = '';
 
     // --- NEW: Scroll to Top Logic ---
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
@@ -1090,7 +2019,9 @@
     // --- Filter Logic (Combined Search and Category) ---
     const searchInput = document.getElementById('searchInput');
     const menuItems = document.querySelectorAll('.menu-item');
+    const mainCategories = document.querySelectorAll('.main-category');
     const categories = document.querySelectorAll('.category');
+    const subCategories = document.querySelectorAll('.sub-category');
     const navLinks = document.querySelectorAll('.nav-link');
     const noResultsMsg = '<div class="no-results">عذراً، لم يتم العثور على منتجات مطابقة.</div>';
 
@@ -1099,8 +2030,55 @@
         const activeCategory = document.querySelector('.nav-link.active')?.dataset.target || null;
 
         let hasResults = false;
-        let visibleCategories = new Set();
+        let visibleMainCategories = new Set();
+        let visibleSubCategories = new Set();
 
+        // Handle main categories with sub-categories
+        mainCategories.forEach(mainCategory => {
+            const mainCategoryType = mainCategory.dataset.category;
+            const subCats = mainCategory.querySelectorAll('.sub-category');
+            let mainCategoryHasResults = false;
+
+            subCats.forEach(subCat => {
+                const subCategoryType = subCat.dataset.category;
+                const items = subCat.querySelectorAll('.menu-item');
+                let subCategoryHasResults = false;
+
+                items.forEach(item => {
+                    const itemName = item.dataset.name.toLowerCase();
+                    const itemCategory = item.dataset.category;
+                    const matchesSearch = itemName.includes(searchTerm);
+                    const matchesCategory = !activeCategory || activeCategory === mainCategoryType || activeCategory === itemCategory;
+
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = 'flex';
+                        subCategoryHasResults = true;
+                        mainCategoryHasResults = true;
+                        hasResults = true;
+                        visibleMainCategories.add(mainCategoryType);
+                        visibleSubCategories.add(subCategoryType);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide sub-categories based on if they have visible items
+                if (subCategoryHasResults) {
+                    subCat.style.display = 'block';
+                } else {
+                    subCat.style.display = 'none';
+                }
+            });
+
+            // Show/hide main categories based on if they have visible items
+            if (mainCategoryHasResults) {
+                mainCategory.style.display = 'block';
+            } else {
+                mainCategory.style.display = 'none';
+            }
+        });
+
+        // Handle regular categories (without sub-categories)
         categories.forEach(category => {
             const categoryType = category.dataset.category;
             const items = category.querySelectorAll('.menu-item');
@@ -1110,22 +2088,20 @@
                 const itemName = item.dataset.name.toLowerCase();
                 const itemCategory = item.dataset.category;
                 const matchesSearch = itemName.includes(searchTerm);
-                const matchesCategory = !activeCategory || itemCategory === activeCategory;
+                const matchesCategory = !activeCategory || activeCategory === itemCategory;
 
                 if (matchesSearch && matchesCategory) {
                     item.style.display = 'flex';
                     categoryHasResults = true;
                     hasResults = true;
-                    visibleCategories.add(categoryType);
+                    visibleMainCategories.add(categoryType);
                 } else {
                     item.style.display = 'none';
                 }
             });
-        });
-        
-        // Show/hide categories based on if they have visible items
-        categories.forEach(category => {
-            if (visibleCategories.has(category.dataset.category)) {
+            
+            // Show/hide categories based on if they have visible items
+            if (categoryHasResults) {
                 category.style.display = 'block';
             } else {
                 category.style.display = 'none';
@@ -1159,7 +2135,7 @@
             e.preventDefault();
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            searchInput.value = ''; // Clear search when a new category is selected
+            searchInput.value = '';
             applyFilters();
         });
     });
@@ -1170,13 +2146,12 @@
         applyFilters();
     });
 
-
     // --- Add to Cart Logic ---
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         button.addEventListener('click', function() {
             const name = this.dataset.name;
             const category = this.dataset.category;
-            const cartType = this.dataset.cartType; // 'dinein' or 'delivery'
+            const cartType = this.dataset.cartType;
             
             const priceElement = this.closest('.item-actions').querySelector('.size-btn.active');
             const price = parseFloat(priceElement.dataset.price);
@@ -1200,319 +2175,4 @@
 
     // --- Size Button Logic ---
     document.querySelectorAll('.price-sizes').forEach(container => {
-        container.querySelectorAll('.size-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    });
-
-    // --- Update Cart Counts ---
-    function updateCartCounts() {
-        const dineInCount = dineInCart.reduce((sum, item) => sum + item.quantity, 0);
-        const deliveryCount = deliveryCart.reduce((sum, item) => sum + item.quantity, 0);
-
-        document.getElementById('dinein-count').textContent = dineInCount;
-        document.getElementById('delivery-count').textContent = deliveryCount;
-    }
-
-    // --- Modal Functions ---
-    function openCartModal(type) {
-        currentCartType = type;
-        const modal = document.getElementById('cartModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const cartItemsDiv = document.getElementById('cartItems');
-        const cartSummaryDiv = document.getElementById('cartSummary');
-        const checkoutFormDiv = document.getElementById('checkoutForm');
-
-        const cart = (type === 'dinein') ? dineInCart : deliveryCart;
-        
-        modalTitle.innerHTML = `<i class="fas fa-${type === 'dinein' ? 'store' : 'motorcycle'}"></i> سلة ${type === 'dinein' ? 'الصالة' : 'الدليفرى'}`;
-        
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = '<p style="text-align:center; padding: 20px;">السلة فارغة.</p>';
-            cartSummaryDiv.innerHTML = '';
-            checkoutFormDiv.innerHTML = '';
-        } else {
-            renderCartItems(cart, cartItemsDiv);
-            renderCartSummary(cart, cartSummaryDiv);
-            renderCheckoutForm(type, checkoutFormDiv);
-        }
-
-        modal.style.display = 'block';
-    }
-
-    function closeCartModal() {
-        document.getElementById('cartModal').style.display = 'none';
-    }
-
-    function renderCartItems(cart, container) {
-        container.innerHTML = '';
-        cart.forEach((item, index) => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'cart-item';
-            itemDiv.innerHTML = `
-                <span>${item.name} (${item.size})</span>
-                <div>
-                    <button onclick="changeQuantity(${index}, -1)" style="background:#eee; border:none; border-radius:5px; cursor:pointer; padding: 5px 10px;">-</button>
-                    <span style="margin: 0 10px;">${item.quantity}</span>
-                    <button onclick="changeQuantity(${index}, 1)" style="background:#eee; border:none; border-radius:5px; cursor:pointer; padding: 5px 10px;">+</button>
-                    <span style="margin-right: 15px; font-weight: bold;">${(item.price * item.quantity).toFixed(2)} ج</span>
-                    <button onclick="removeItem(${index})" style="color:red; background:none; border:none; cursor:pointer; font-size:1.2em;"><i class="fas fa-trash"></i></button>
-                </div>
-            `;
-            container.appendChild(itemDiv);
-        });
-    }
-    
-    function renderCartSummary(cart, container) {
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        let service = 0, tax = 0, deliveryFee = 0, total = 0;
-        
-        let summaryHTML = `<p>المجموع الفرعي: <span>${subtotal.toFixed(2)} ج</span></p>`;
-
-        if (currentCartType === 'dinein') {
-            service = subtotal * 0.10;
-            tax = (subtotal + service) * 0.14;
-            total = subtotal + service + tax;
-            summaryHTML += `
-                <p>الخدمة (10%): <span>${service.toFixed(2)} ج</span></p>
-                <p>ضريبة القيمة المضافة (14%): <span>${tax.toFixed(2)} ج</span></p>
-            `;
-        } else { // delivery
-            deliveryFee = 15;
-            total = subtotal + deliveryFee;
-            summaryHTML += `
-                <p>رسوم الدليفرى: <span>${deliveryFee.toFixed(2)} ج</span></p>
-            `;
-        }
-        
-        summaryHTML += `<p class="total">الإجمالي: <span>${total.toFixed(2)} ج</span></p>`;
-        container.innerHTML = summaryHTML;
-    }
-
-    function renderCheckoutForm(type, container) {
-        if (type === 'dinein') {
-            container.innerHTML = `
-                <h3>بيانات طلب الصالة</h3>
-                <form id="dineinCheckoutForm">
-                    <div class="form-group">
-                        <label for="customerName" class="required">اسم العميل</label>
-                        <input type="text" id="customerName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tableNumber" class="required">رقم الطاولة</label>
-                        <input type="text" id="tableNumber" required>
-                    </div>
-                    <button type="submit" class="btn-primary">إتمام الطلب</button>
-                </form>
-            `;
-        } else { // delivery
-            container.innerHTML = `
-                <h3>بيانات طلب الدليفرى</h3>
-                <form id="deliveryCheckoutForm">
-                    <div class="form-group">
-                        <label for="deliveryName" class="required">اسم العميل</label>
-                        <input type="text" id="deliveryName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="deliveryPhone" class="required">رقم الموبايل</label>
-                        <input type="tel" id="deliveryPhone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="deliveryAddress" class="required">العنوان</label>
-                        <input type="text" id="deliveryAddress" required>
-                    </div>
-                     <div class="form-group">
-                        <label for="deliveryBuilding" class="required">رقم العمارة</label>
-                        <input type="text" id="deliveryBuilding" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="deliveryApartment">رقم الشقة (اختياري)</label>
-                        <input type="text" id="deliveryApartment">
-                    </div>
-                    <div class="form-group">
-                        <label for="deliveryNotes">ملاحظات إضافية (اختياري)</label>
-                        <input type="text" id="deliveryNotes">
-                    </div>
-                    <button type="submit" class="btn-primary">إتمام الطلب</button>
-                </form>
-            `;
-        }
-        
-        // Add event listener to newly created form
-        container.querySelector('form').addEventListener('submit', handleCheckout);
-    }
-
-    // --- Cart Item Management ---
-    function changeQuantity(index, delta) {
-        const cart = (currentCartType === 'dinein') ? dineInCart : deliveryCart;
-        cart[index].quantity += delta;
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
-        }
-        updateCartModal();
-    }
-
-    function removeItem(index) {
-        const cart = (currentCartType === 'dinein') ? dineInCart : deliveryCart;
-        cart.splice(index, 1);
-        updateCartModal();
-    }
-    
-    function updateCartModal() {
-        const cart = (currentCartType === 'dinein') ? dineInCart : deliveryCart;
-        const cartItemsDiv = document.getElementById('cartItems');
-        const cartSummaryDiv = document.getElementById('cartSummary');
-        const checkoutFormDiv = document.getElementById('checkoutForm');
-
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = '<p style="text-align:center; padding: 20px;">السلة فارغة.</p>';
-            cartSummaryDiv.innerHTML = '';
-            checkoutFormDiv.innerHTML = '';
-            closeCartModal();
-        } else {
-            renderCartItems(cart, cartItemsDiv);
-            renderCartSummary(cart, cartSummaryDiv);
-        }
-        updateCartCounts();
-    }
-
-    // --- Checkout Logic ---
-    function handleCheckout(event) {
-        event.preventDefault();
-        const cart = (currentCartType === 'dinein') ? dineInCart : deliveryCart;
-        let customerDetails = {};
-        let orderTypeText = '';
-
-        if (currentCartType === 'dinein') {
-            customerDetails = {
-                name: document.getElementById('customerName').value,
-                table: document.getElementById('tableNumber').value,
-            };
-            orderTypeText = 'طلب صالة';
-        } else {
-            customerDetails = {
-                name: document.getElementById('deliveryName').value,
-                phone: document.getElementById('deliveryPhone').value,
-                address: document.getElementById('deliveryAddress').value,
-                building: document.getElementById('deliveryBuilding').value,
-                apartment: document.getElementById('deliveryApartment').value,
-                notes: document.getElementById('deliveryNotes').value,
-            };
-            orderTypeText = 'طلب دليفرى';
-        }
-
-        // Calculate totals again for message
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        let service = 0, tax = 0, deliveryFee = 0, total = 0;
-        if (currentCartType === 'dinein') {
-            service = subtotal * 0.10;
-            tax = (subtotal + service) * 0.14;
-            total = subtotal + service + tax;
-        } else {
-            deliveryFee = 15;
-            total = subtotal + deliveryFee;
-        }
-
-        // Build WhatsApp Message
-        let message = `*طلب جديد من: ${customerDetails.name}*\n\n`;
-        message += `*نوع الطلب:* ${orderTypeText}\n`;
-        message += `--------------------------------\n`;
-        message += `*تفاصيل الطلب:*\n`;
-        cart.forEach(item => {
-            message += `- ${item.name} (${item.size}) الكمية: ${item.quantity} = ${(item.price * item.quantity).toFixed(2)} ج\n`;
-        });
-        message += `--------------------------------\n`;
-        message += `*ملخص الحساب:*\n`;
-        message += `المجموع الفرعي: ${subtotal.toFixed(2)} ج\n`;
-        if (currentCartType === 'dinein') {
-            message += `الخدمة (10%): ${service.toFixed(2)} ج\n`;
-            message += `ضريبة القيمة المضافة (14%): ${tax.toFixed(2)} ج\n`;
-        } else {
-            message += `رسوم الدليفرى: ${deliveryFee.toFixed(2)} ج\n`;
-        }
-        message += `*الإجمالي: ${total.toFixed(2)} ج*\n`;
-        message += `--------------------------------\n`;
-        message += `*بيانات العميل:*\n`;
-        if (currentCartType === 'dinein') {
-            message += `الاسم: ${customerDetails.name}\n`;
-            message += `رقم الطاولة: ${customerDetails.table}\n`;
-        } else {
-            message += `الاسم: ${customerDetails.name}\n`;
-            message += `الهاتف: ${customerDetails.phone}\n`;
-            message += `العنوان: ${customerDetails.address}, عمارة ${customerDetails.building}`;
-            if (customerDetails.apartment) message += `, شقة ${customerDetails.apartment}`;
-            message += `\n`;
-            if (customerDetails.notes) message += `ملاحظات: ${customerDetails.notes}\n`;
-        }
-        
-        // Send to WhatsApp
-        const phoneNumber = '201030566078'; // Your number with country code and no '+'
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
-
-        // Clear cart and close modal
-        if (currentCartType === 'dinein') {
-            dineInCart = [];
-        } else {
-            deliveryCart = [];
-        }
-        updateCartCounts();
-        closeCartModal();
-        showNotification('تم إرسال طلبك بنجاح! شكراً لك.');
-    }
-
-    // --- Utility Functions ---
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 3000;
-            font-weight: bold;
-            animation: slideDown 0.5s ease;
-        `;
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        setTimeout(() => {
-            notification.style.animation = 'slideUp 0.5s ease';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 500);
-        }, 3000);
-    }
-
-    // --- Map Function ---
-    function openMap() {
-        const mapURL = "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3457.226836360078!2d31.002149684887176!3d29.94415328191885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU2JzM5LjAiTiAzMMKwNTknNTkuOSJF!5e0!3m2!1sar!2seg!4v1763242419468!5m2!1sar!2seg";
-        window.open(mapURL, '_blank');
-    }
-
-    // Add animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideDown {
-            from { transform: translate(-50%, -100%); opacity: 0; }
-            to { transform: translate(-50%, 0); opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { transform: translate(-50%, 0); opacity: 1; }
-            to { transform: translate(-50%, -100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
-
-</script>
-
-</body>
-</html>
+        container.querySelectorAll('.size-btn').forEach
